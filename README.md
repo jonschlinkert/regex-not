@@ -1,6 +1,6 @@
 # regex-not [![NPM version](https://img.shields.io/npm/v/regex-not.svg?style=flat)](https://www.npmjs.com/package/regex-not) [![NPM downloads](https://img.shields.io/npm/dm/regex-not.svg?style=flat)](https://npmjs.org/package/regex-not) [![Build Status](https://img.shields.io/travis/jonschlinkert/regex-not.svg?style=flat)](https://travis-ci.org/jonschlinkert/regex-not)
 
-> Create a regex to match everything except for the given string.
+> Create a javascript regular expression for matching everything except for the given string.
 
 ## Install
 
@@ -32,7 +32,7 @@ console.log(not('foo'));
 
 **Strict matching**
 
-By default, the returned regex is for strictly (not) matching the exact given pattern (in other words, "match this string if it dot NOT _exactly equal_ `foo`"):
+By default, the returned regex is for strictly (not) matching the exact given pattern (in other words, "match this string if it does NOT _exactly equal_ `foo`"):
 
 ```js
 var re = not('foo');
@@ -75,8 +75,6 @@ console.log(re.test('barfoo', {contains: true}));  //=> false
 ### Contributing
 
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](../../issues/new).
-
-Please read the [contributing guide](.github/contributing.md) for avice on opening issues, pull requests, and coding standards.
 
 ### Building docs
 

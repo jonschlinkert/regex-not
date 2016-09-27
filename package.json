@@ -1,6 +1,6 @@
 {
   "name": "regex-not",
-  "description": "Create a regex to match everything except for the given string.",
+  "description": "Create a javascript regular expression for matching everything except for the given string.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/regex-not",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
