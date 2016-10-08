@@ -1,25 +1,66 @@
 'use strict';
 
-function toRegex(str, options) {
-  options = options || {};
+var extend = require('extend-shallow');
 
-  if (options && options.contains === true) {
-    options.strictNegate = false;
-  }
+/**
+ * The main export is a function that takes a `pattern` string and an `options` object.
+ *
+ * ```js
+ & var not = require('regex-not');
+ & console.log(not('foo'));
+ & //=> /^(?:(?!^(?:foo)$).)*$/
+ * ```
+ *
+ * @param {String} `pattern`
+ * @param {Object} `options`
+ * @return {RegExp} Converts the given `pattern` to a regex using the specified `options`.
+ * @api public
+ */
 
-  var open = options.strictOpen !== false ? '^' : '';
-  var close = options.strictClose !== false ? '$' : '';
-  return new RegExp(open + toRegex.create(str, options) + close);
+function toRegex(pattern, options) {
+  return new RegExp(toRegex.create(pattern, options));
 }
 
-toRegex.create = function(str, options) {
-  if (typeof str !== 'string') {
+/**
+ * Create a regex-compatible string from the given `pattern` and `options`.
+ *
+ * ```js
+ & var not = require('regex-not');
+ & console.log(not.create('foo'));
+ & //=> '^(?:(?!^(?:foo)$).)*$'
+ * ```
+ * @param {String} `pattern`
+ * @param {Object} `options`
+ * @return {String}
+ * @api public
+ */
+
+toRegex.create = function(pattern, options) {
+  if (typeof pattern !== 'string') {
     throw new TypeError('expected a string');
   }
-  if (options && options.strictNegate === false) {
-    return '(?:(?!(?:' + str + ')).)*';
+
+  var opts = extend({}, options);
+  if (opts && opts.contains === true) {
+    opts.strictNegate = false;
   }
-  return '(?:(?!^(?:' + str + ')$).)*';
+
+  var open = opts.strictOpen !== false ? '^' : '';
+  var close = opts.strictClose !== false ? '$' : '';
+  var endChar = opts.endChar ? opts.endChar : '+';
+  var str = pattern;
+
+  if (opts && opts.strictNegate === false) {
+    str = '(?:(?!(?:' + pattern + ')).)' + endChar;
+  } else {
+    str = '(?:(?!^(?:' + pattern + ')$).)' + endChar;
+  }
+
+  return open + str + close;
 };
+
+/**
+ * Expose `toRegex`
+ */
 
 module.exports = toRegex;
