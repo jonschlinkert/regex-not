@@ -69,7 +69,7 @@ console.log(re.test('barfoo', {contains: true}));  //=> false
 
 ### Related projects
 
-* [regex-cache](https://www.npmjs.com/package/regex-cache): Memoize the results of a call to the RegExp constructor, avoiding repetitious runtime compilation of… [more](https://github.com/jonschlinkert/regex-cache) | [homepage](https://github.com/jonschlinkert/regex-cache "Memoize the results of a call to the RegExp constructor, avoiding repetitious runtime compilation of the same string and options, resulting in suprising performance improvements.")
+* [regex-cache](https://www.npmjs.com/package/regex-cache): Memoize the results of a call to the RegExp constructor, avoiding repetitious runtime compilation of… [more](https://github.com/jonschlinkert/regex-cache) | [homepage](https://github.com/jonschlinkert/regex-cache "Memoize the results of a call to the RegExp constructor, avoiding repetitious runtime compilation of the same string and options, resulting in surprising performance improvements.")
 * [to-regex](https://www.npmjs.com/package/to-regex): Generate a regex from a string or array of strings. | [homepage](https://github.com/jonschlinkert/to-regex "Generate a regex from a string or array of strings.")
 
 ### Contributing
