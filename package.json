@@ -20,7 +20,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "extend-shallow": "^2.0.1"
+    "extend-shallow": "^3.0.2"
   },
   "devDependencies": {
     "gulp-format-md": "^0.1.10",
