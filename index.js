@@ -58,7 +58,7 @@ toRegex.create = function(pattern, options) {
   }
 
   var res = open + str + close;
-  if (opts.safe !== false && safe(res) === false) {
+  if (opts.safe === true && safe(res) === false) {
     throw new Error('potentially unsafe regular expression: ' + res);
   }
 
