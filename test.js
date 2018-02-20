@@ -45,14 +45,15 @@ describe('regex-not', function() {
     assert.equal(not('foo', opts).test('barfoo'), true);
   });
 
-  it('should throw an error when invalid args are passed', function(cb) {
-    try {
+  it('should throw when a potentially unsafe regex is passed', function() {
+    assert.throws(function() {
+      not('(x+x+)+y', { safe: true });
+    }, /potentially unsafe/);
+  });
+
+  it('should throw an error when invalid args are passed', function() {
+    assert.throws(function() {
       not();
-      cb(new Error('expected an error'));
-    } catch (err) {
-      assert(err);
-      assert.equal(err.message, 'expected a string');
-      cb();
-    }
+    }, /expected/);
   });
 });
